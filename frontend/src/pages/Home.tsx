@@ -22,6 +22,7 @@ import AnimatedCounter from 'components/AnimatedCounter'
 import ChapterMap from 'components/ChapterMap'
 import ItemCardList from 'components/ItemCardList'
 import LoadingSpinner from 'components/LoadingSpinner'
+import MovingLogos from 'components/LogoCarousel'
 import MultiSearchBar from 'components/MultiSearch'
 import SecondaryCard from 'components/SecondaryCard'
 import TopContributors from 'components/ToggleContributors'
@@ -109,7 +110,7 @@ export default function Home() {
   ]
 
   return (
-    <div className="mt-16 min-h-screen bg-white p-8 text-gray-600 dark:bg-[#212529] dark:text-gray-300">
+    <div className="mt-16 min-h-screen p-8 text-gray-600 dark:bg-[#212529] dark:text-gray-300">
       <div className="mx-auto max-w-6xl">
         <div className="pt-20 pt-5 text-center sm:mb-20">
           <div className="flex flex-col items-center py-10">
@@ -217,7 +218,7 @@ export default function Home() {
             style={{ height: '400px', width: '100%', zIndex: '0' }}
           />
         </div>
-        <>
+        <div className="grid-cols-2 gap-4 lg:grid">
           <ItemCardList
             title="Recent Issues"
             data={data.recentIssues}
@@ -246,8 +247,7 @@ export default function Home() {
               </div>
             )}
           />
-        </>
-
+        </div>
         <div className="grid gap-6 md:grid-cols-4">
           {counterData.map((stat, index) => (
             <SecondaryCard key={index} className="text-center">
@@ -273,6 +273,9 @@ export default function Home() {
             >
               Join OWASP Now
             </a>
+          </SecondaryCard>
+          <SecondaryCard>
+            <MovingLogos sponsors={data.sponsors} />
           </SecondaryCard>
         </div>
       </div>
